@@ -19,26 +19,15 @@ def simulate_guard(grid, start_row, start_col):
         elif directions[direction_idx] == 'left':
             next_col -= 1
         
-        # print(next_row, next_col, visited_paths)
-        # Check if the next position is within bounds and not a wall
         if 0 <= next_row < len(grid) and 0 <= next_col < len(grid[0]) and grid[next_row][next_col] != '#':
-            # Define the current state as (current_position, direction)
             current_state = (pos_row, pos_col, direction_idx)
-            
-            # If the state has been visited, it's a loop
             if current_state in visited_paths:
-                return 1  # Loop detected
-            
-            # Add the state to the set of visited states
+                return 1  
             visited_paths.add(current_state)
-            
-            # Move to the next position
             pos_row, pos_col = next_row, next_col
         else:
-            # Hit a wall or boundary, change direction
             direction_idx = (direction_idx + 1) % 4
-    
-    # If the guard exits the grid without looping
+
     return 0
 
 
@@ -57,8 +46,6 @@ def main():
     FILENAME = 'input.txt'
     grid = read_from_file(FILENAME)
     start_row, start_col = None, None
-
-    # Locate the guard's starting position
     for r, row in enumerate(grid):
         if '^' in row:
             start_row, start_col = r, row.index('^')
