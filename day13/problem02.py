@@ -25,7 +25,6 @@ def improve_readability(input):
         i+=4
     return claw_machines
 
-
 def calculate_A_B(claw_machine):
     a, b = 0, 0
     x1, x2, x3, x4 = claw_machine[0][0][0], claw_machine[0][0][1], claw_machine[0][1][0], claw_machine[0][1][1]
